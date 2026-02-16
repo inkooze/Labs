@@ -9,4 +9,6 @@ arrMiddle = sum(arr) / len(arr)
 
 targetArr = [i for i in arr if i > arrMiddle]
 
+
+
 print(sum(targetArr) / len(targetArr))
