@@ -12,15 +12,7 @@
 arr = list(map(int, input('Введи элементы списка через пробел... ').split()))
 targetIndex = int(input('Введи индекс-цель... '))
 
+# del arr[targetIndex]
 arr.pop(targetIndex)
 
 print(arr)
-
-
-
-# arr = list(map(int, input('Введи элементы списка через пробел... ').split()))
-# targetIndex = int(input('Введи индекс-цель... '))
-#
-# del arr[targetIndex]
-#
-# print(arr)
