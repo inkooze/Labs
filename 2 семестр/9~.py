@@ -13,7 +13,6 @@ arr = list(map(int, input('Введи элементы списка через �
 targetIndex = int(input('Введи индекс-цель... '))
 
 # del arr[targetIndex]
-
 arr.pop(targetIndex)
 
 print(arr)
