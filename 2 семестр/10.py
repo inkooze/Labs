@@ -4,26 +4,26 @@
 '''''
 
 matrix1 = [
-  [1, 2],
-  [3, 4]
+	[1, 2],
+	[3, 4]
 ]
 
 matrix2 = [
-  [4, 3],
-  [2, 1]
+	[4, 3],
+	[2, 1]
 ]
 
 # Поиск максимума/минимума в матрице
 # minMaxFlag - True поиск максимума, False - минимума
 def matrixExtr(matrix: list[list], minMaxFlag: bool = False) -> tuple:
-  extVal, extValI, extValJ = matrix[0][0], 0, 0
+	extVal, extValI, extValJ = matrix[0][0], 0, 0
 
-  for i, row in enumerate(matrix):
-    for j, el in enumerate(row):
-      if (minMaxFlag and el > extVal) or (not minMaxFlag and el < extVal):
-        extVal, extValI, extValJ = el, i, j
+	for i, row in enumerate(matrix):
+		for j, el in enumerate(row):
+			if (minMaxFlag and el > extVal) or (not minMaxFlag and el < extVal):
+				extVal, extValI, extValJ = el, i, j
 
-  return extVal, extValI, extValJ
+		return extVal, extValI, extValJ
 
 maxVal, maxValI, maxValJ = matrixExtr(matrix1, True)
 minVal, minValI, minValJ = matrixExtr(matrix2)
