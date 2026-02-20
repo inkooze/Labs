@@ -35,4 +35,5 @@ def centroid(cluster):
 
     return centroidX, centroidY, minDist, maxDist
 
+# print(centroid(cluster1)[:2], centroid(cluster2)[:2])
 print(int(centroid(cluster1)[3] * 100000), int(centroid(cluster2)[2] * 100000))
