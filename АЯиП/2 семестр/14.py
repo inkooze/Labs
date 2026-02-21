@@ -3,14 +3,20 @@
 - Составить подпрограмму определения адресов элементов, значения которых лежат в пределах от p до q, в одномерном массиве. С помощью этой подпрограммы определить и вывести на экран адреса соответствующих элементов в столбцах двухмерной матрицы.
 '''''
 
-A = [12, 5, 2, 854, 66, 3, 78, 12, 19, 25]
-P, Q = 12, 78
+def dataInput():
+    numsCount = int(input('Укажи количество чисел... '))
+    nums = tuple(int(input(f'{i + 1} число... ')) for i in range(numsCount))
 
-def indexe(lst, p, q):
+    P = int(input('Укажи левый предел (p)... '))
+    Q = int(input('Укажи правый предел (q)... '))
+
+    return nums, P, Q
+
+def dataOutput(lst, p, q):
     a = []
     for i in range(len(lst)):
         if p <= lst[i] <= q:
             a.append(i)
-    return a
+    print(a)
 
-print(indexe(A, P, Q))
+dataOutput(*dataInput())
