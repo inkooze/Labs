@@ -61,4 +61,4 @@ while num <= n:
             rule = 0
 
 for row in matrix:
-    print(*row)
+    print(*row, sep = '\t')
