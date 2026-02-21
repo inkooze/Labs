@@ -13,4 +13,5 @@ def indexe(lst, p, q):
             a.append(i)
     return a
 
+
 print(indexe(A, P, Q))
