@@ -19,4 +19,5 @@ def dataOutput(lst, p, q):
             a.append(i)
     print(a)
 
+
 dataOutput(*dataInput())
