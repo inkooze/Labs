@@ -21,17 +21,6 @@ for i in stars:
         else:
             cluster5.append(i)
 
-    # if x < -15 and y < 5:
-    #     cluster1.append(i)
-    # elif x < -5 and y > 5:
-    #     cluster2.append(i)
-    # elif x > 5 and y > 5:
-    #     cluster4.append(i)
-    # elif x > 5 and y < -5:
-    #     cluster5.append(i)
-    # else:
-    #     cluster3.append(i)
-
 def centroid(cluster):
     minDistSum = 10 ** 100
 
