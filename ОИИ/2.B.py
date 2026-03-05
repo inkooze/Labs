@@ -74,4 +74,4 @@ for i in range(5):
     firstCentr = centroidCenterMass(clustersMethod2[i])
     lastCentr = centersMethod1[i]
 
-    print(f'{ i + 1 }. { firstCentr } -> { lastCentr } | Погрешность = { ((firstCentr[0] - lastCentr[0]) ** 2 + (firstCentr[1] - lastCentr[1]) ** 2) ** 0.5 }')
+    print(f'{ i + 1 }. { firstCentr } -> { lastCentr } | Погрешность = { ((firstCentr[0] - lastCentr[0]) ** 2 + (firstCentr[1] - lastCentr[1]) ** 2) ** 0.5 } | Точек в кластере: { len(clustersMethod1[i]) } -> { len(clustersMethod2[i]) }')
