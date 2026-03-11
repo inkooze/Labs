@@ -8,11 +8,11 @@ marksCount = int(input('Укажи количество чисел... '))
 disciplines = tuple(input(f'{ i + 1 } дисциплина... ') for i in range(marksCount))
 marks = tuple(input(f'Оценка за { disciplines[i] }... ') for i in range(marksCount))
 
-with open(r'/radio_python/АЯиП/2 семестр/16.1 (Оценки).txt', 'a', encoding = 'UTF-8') as file:
+with open('16.1_Оценки.txt', 'a', encoding = 'UTF-8') as file:
 	for i in range(marksCount):
 		file.write(f'{ disciplines[i] }: { marks[i] }\n')
 
-with open(r'/radio_python/АЯиП/2 семестр/16.1 (Оценки).txt', 'r', encoding = 'UTF-8') as file:
+with open('16.1_Оценки.txt', 'r', encoding = 'UTF-8') as file:
 	marksSum = 0
 	marksCount = 0
 
