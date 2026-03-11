@@ -1,6 +1,7 @@
 # Общие объявления:
 from math import dist
 from statistics import mean
+from random import shuffle
 
 ## Центроид, как центр масс звёзд, рассматриваемых в кластере:
 def centroidCenterMass(cluster: list[tuple]):
@@ -18,21 +19,24 @@ def centroidCenterMass(cluster: list[tuple]):
 
     return X, Y
 
-## Центроид, как среднее арифметическое соответствующих координат всех звёзд кластера:
-# def centroidArithmeticMean(cluster):
-#     X = mean(star[0] for star in cluster)
-#     Y = mean(star[1] for star in cluster)
-#
-#     return X, Y
+# Центроид, как среднее арифметическое соответствующих координат всех звёзд кластера:
+def centroidArithmeticMean(cluster):
+    X = mean(star[0] for star in cluster)
+    Y = mean(star[1] for star in cluster)
+
+    return X, Y
 
 # Решение через k-means:
 stars = [tuple(map(float, i.split())) for i in open('27B.txt')]
 
-clustersMethod1 = [], [], [], [], []
+# shuffle(stars)
+# centersMethod1 = stars[:5]
 centersMethod1 = [(-17.30774, 18.39937), (19.11043, 18.35931), (-29.66172, -10.89271), (19.58036, -17.80037), (-0.01541, 0.01946)]
 
 ## "Итеративное повторение шагов 3-5":
-for _ in range(1):
+for _ in range(10):
+    clustersMethod1 = [], [], [], [], []
+
     ### Распределение звёзд на основе их расстояния от центров кластеров в переменной centersMethod1:
     for star in stars:
         minToCenterDist = float('inf')
@@ -71,7 +75,7 @@ for i in stars:
 
 # Вывод по результатам подсчётов выше:
 for i in range(5):
-    firstCentr = centroidCenterMass(clustersMethod2[i])
+    firstCentr = centroidArithmeticMean(clustersMethod2[i])
     lastCentr = centersMethod1[i]
 
     print(f'{ i + 1 }. { firstCentr } -> { lastCentr } | Погрешность = { ((firstCentr[0] - lastCentr[0]) ** 2 + (firstCentr[1] - lastCentr[1]) ** 2) ** 0.5 } | Точек в кластере: { len(clustersMethod1[i]) } -> { len(clustersMethod2[i]) }')
