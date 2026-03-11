@@ -13,15 +13,20 @@ def diagSum(matrix: list[list]):
         summ += matrix[i][i]
     return summ
 
-matrixA = [
-    [11, 2],
-    [3, 45]
-]
+def matrixInput(strin: int, stolb: int):
+    return [[int(input('Введи число... ')) for j in [0] * stolb] for i in [0] * strin]
 
-matrixB = [
-    [45, 3],
-    [2, 13]
-]
+def matrixOutput(matrix: list[list]):
+    res = ''
+    for row in matrix:
+        res += str(row) + '\n'
+    return res
+
+matrixA = matrixInput(*map(int, input('Введи размеры матрицы... ').split()))
+matrixB = matrixInput(*map(int, input('Введи размеры матрицы... ').split()))
+
+print('Матрица А:\n', matrixOutput(matrixA))
+print('Матрица B:\n', matrixOutput(matrixB))
 
 print(f'''След матрицы А = { diagSum(matrixA) }
 След матрицы В = { diagSum(matrixB) }''')
@@ -30,7 +35,7 @@ print(f'''След матрицы А = { diagSum(matrixA) }
 def bubbleSort(lst):
     for i in range(len(lst)):
         for j in range(len(lst) - i - 1):
-            if lst[j] < lst[j + 1]: # > сортирует по возрастанию, < по убыванию
+            if lst[j] > lst[j + 1]: # > сортирует по возрастанию, < по убыванию
                 lst[j], lst[j + 1] = lst[j + 1], lst[j]
     return lst
 
