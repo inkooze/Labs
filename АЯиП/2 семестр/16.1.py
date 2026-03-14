@@ -1,23 +1,22 @@
 '''
-Работа №16 - Вариант 6 (16) - Файлы (Бинарные файлы)
+Работа №16.1 - Вариант 6 (16) - Файлы (Бинарные файлы)
 - Во всех вариантах заданий предусмотреть ввод пользователем количества компонент. Далее, записать компоненты в файл, закрыть файл. После этого заново открыть файл и считать из него компоненты так, как будто заранее неизвестно их число.
 - Записать в файл оценки (в баллах), полученные некоторым студентом на экзаменах в течение всех сессий, и определить средний балл.
 '''''
 
-marksCount = int(input('Укажи количество чисел... '))
-disciplines = tuple(input(f'{ i + 1 } дисциплина... ') for i in range(marksCount))
-marks = tuple(input(f'Оценка за { disciplines[i] }... ') for i in range(marksCount))
+marksCount = int(input('Укажи количество дисциплин/оценок... '))
+marks = tuple(input(f'Оценка за {i + 1} дисц.... ') for i in range(marksCount))
 
-with open('16.1_Оценки.txt', 'a', encoding = 'UTF-8') as file:
+with open('16.1 (Data).txt', 'wb') as file:
 	for i in range(marksCount):
-		file.write(f'{ disciplines[i] }: { marks[i] }\n')
+		file.write((marks[i] + '\n').encode())
 
-with open('16.1_Оценки.txt', 'r', encoding = 'UTF-8') as file:
+with open('16.1 (Data).txt', 'rb') as file:
 	marksSum = 0
 	marksCount = 0
 
 	for line in file:
-		marksSum += int(line.split(': ')[1])
+		marksSum += int(line)
 		marksCount += 1
 
-print('\nСреднее арифметическое:', marksSum / marksCount)
+print('\nСреднее арифметическое: %.2f' % (marksSum / marksCount))
