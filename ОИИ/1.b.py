@@ -1,6 +1,6 @@
 from math import dist
 
-stars = [tuple(map(float, i.replace(',', '.').split())) for i in open('27B.txt')]
+stars = [tuple(map(float, i.replace(',', '.').split())) for i in open('27b.txt')]
 
 # Распределение по кластерам
 cluster1, cluster2, cluster3, cluster4, cluster5 = [], [], [], [], []

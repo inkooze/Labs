@@ -27,21 +27,21 @@ def centroidArithmeticMean(cluster):
     return X, Y
 
 # Решение через k-means:
-stars = [tuple(map(float, i.split())) for i in open('27A.txt')]
+stars = [tuple(map(float, i.split())) for i in open('27b.txt')]
 
 # shuffle(stars)
-# centersMethod1 = stars[:2]
-centersMethod1 = [(1.01142, 1.45567), (11.18348, 6.39232)]
+# centersMethod1 = stars[:5]
+centersMethod1 = [(-17.30774, 18.39937), (19.11043, 18.35931), (-29.66172, -10.89271), (19.58036, -17.80037), (-0.01541, 0.01946)]
 
 ## "Итеративное повторение шагов 3-5":
-for _ in range(25):
-    clustersMethod1 = [], []
+for _ in range(10):
+    clustersMethod1 = [], [], [], [], []
 
     ### Распределение звёзд на основе их расстояния от центров кластеров в переменной centersMethod1:
     for star in stars:
         minToCenterDist = float('inf')
 
-        for i in range(2):
+        for i in range(5):
             toCenterDist = dist(star, centersMethod1[i])
 
             if toCenterDist < minToCenterDist:
@@ -50,24 +50,32 @@ for _ in range(25):
         clustersMethod1[nearClusterIndex].append(star)
 
     ### "Шаг 5":
-    for i in range(2):
+    for i in range(5):
         centersMethod1[i] = centroidCenterMass(clustersMethod1[i])
 
 # Решение по центру масс:
-clustersMethod2 = [], []
+clustersMethod2 = [], [], [], [], []
 
 ## Распределение звёзд по кластерам, на основе визуального представления:
 for i in stars:
-    x = i[0]
+    X, Y = i[0], i[1]
 
-    if x < 4:
-        clustersMethod2[0].append(i)
-    if x > 8:
-        clustersMethod2[1].append(i)
+    if Y > 7:
+        if X < 0:
+            clustersMethod2[0].append(i)
+        else:
+            clustersMethod2[1].append(i)
+    else:
+        if X < -15:
+            clustersMethod2[2].append(i)
+        elif X > 5:
+            clustersMethod2[3].append(i)
+        else:
+            clustersMethod2[4].append(i)
 
 # Вывод по результатам подсчётов выше:
-for i in range(2):
+for i in range(5):
     firstCentr = centroidArithmeticMean(clustersMethod2[i])
     lastCentr = centersMethod1[i]
 
-    print(f'{ i + 1 }. Центроид: { firstCentr } -> { lastCentr } | Погрешность = { ((firstCentr[0] - lastCentr[0]) ** 2 + (firstCentr[1] - lastCentr[1]) ** 2) ** 0.5 } | Точек в кластере: { len(clustersMethod1[i]) } -> { len(clustersMethod2[i]) }')
+    print(f'{ i + 1 }. { firstCentr } -> { lastCentr } | Погрешность = { ((firstCentr[0] - lastCentr[0]) ** 2 + (firstCentr[1] - lastCentr[1]) ** 2) ** 0.5 } | Точек в кластере: { len(clustersMethod1[i]) } -> { len(clustersMethod2[i]) }')
