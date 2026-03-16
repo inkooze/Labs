@@ -6,7 +6,7 @@ from random import shuffle
 # / / / / /
 
 ## Центроид, как центр масс звёзд, рассматриваемых в кластере:
-def centroidCenterMass(cluster: list[tuple]):
+def centroidCenterMass(cluster):
     minSumDist = float('inf')
 
     for handStar in cluster:
