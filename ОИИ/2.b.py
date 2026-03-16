@@ -34,7 +34,7 @@ stars = [tuple(map(float, i.split())) for i in open('27b.txt')]
 centersMethod1 = [(-17.30774, 18.39937), (19.11043, 18.35931), (-29.66172, -10.89271), (19.58036, -17.80037), (-0.01541, 0.01946)]
 
 ## "Итеративное повторение шагов 3-5":
-for _ in range(10):
+for _ in range(3):
     clustersMethod1 = [], [], [], [], []
 
     ### Распределение звёзд на основе их расстояния от центров кластеров в переменной centersMethod1:
@@ -73,9 +73,13 @@ for i in stars:
         else:
             clustersMethod2[4].append(i)
 
+# Задание на защиту: найти самую дальнюю от центроида кластера (в каждом) звезду и вывести это расстояние
+def maxDist(cluster, centroid):
+    return max(dist(star, centroid) for star in cluster)
+
 # Вывод по результатам подсчётов выше:
 for i in range(5):
     firstCentr = centroidArithmeticMean(clustersMethod2[i])
     lastCentr = centersMethod1[i]
 
-    print(f'{ i + 1 }. { firstCentr } -> { lastCentr } | Погрешность = { ((firstCentr[0] - lastCentr[0]) ** 2 + (firstCentr[1] - lastCentr[1]) ** 2) ** 0.5 } | Точек в кластере: { len(clustersMethod1[i]) } -> { len(clustersMethod2[i]) }')
+    print(f'Центроид: { firstCentr } -> { lastCentr }\nПогрешность: { ((firstCentr[0] - lastCentr[0]) ** 2 + (firstCentr[1] - lastCentr[1]) ** 2) ** 0.5 }\nТочек в кластере: { len(clustersMethod1[i]) } -> { len(clustersMethod2[i]) }\nРасстояние от самой дальней точки кластера: {maxDist(clustersMethod1[i], firstCentr)} -> {maxDist(clustersMethod2[i], lastCentr)}\n')
