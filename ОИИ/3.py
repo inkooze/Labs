@@ -128,6 +128,7 @@ def implic(A, B):
 def pricel(A, B):
     return dizun(konun(A, otric(B)), konun(otric(A), B))
 
+
 print()
 for key, value in dic.items():
     A, B = value
