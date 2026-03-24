@@ -1,14 +1,18 @@
 """
-Работа №13 (Доп.) - Вариант 8 - Множества
-- Вывести в возрастающем порядке все целые числа из диапазона 1..1000, представимые в виде n^2+m^2, где n>0, m>0.
+Работа №13 (Доп.) - Вариант 16 - Множества
+- Вычислить: (¬(A ⋃ B) ⊕ C) - (D ⋃ C), при:
+	- A = {'a', 1, 7, 'c'};
+	- B = {1, 2, 3, 4};
+	- C = {'a', 'b', 'c'};
+	- D = {2, 3, 'b'};
+	- Omega = {'a', 'b', 'c', 1, 2, 3, 4, 5, 6, 7}.
 """
 
-targetNums = set()
+A = {'a', 1, 7, 'c'}
+B = {1, 2, 3, 4}
+C = {'a', 'b', 'c'}
+D = {2, 3, 'b'}
+Omega = {'a', 'b', 'c', 1, 2, 3, 4, 5, 6, 7}
 
-for N in range(1, 1001):
-	for n in range(1, 33):
-		for m in range(1, 33):
-			if N == m ** 2 + n ** 2:
-				targetNums.add(N)
-
-print(targetNums)
+# print(((Omega - (A | B)) ^ C) - (D | C))
+print(Omega.difference(A.union(B)).symmetric_difference(C).difference(D.union(C)))
