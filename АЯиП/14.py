@@ -4,21 +4,46 @@
 - Во всех заданиях ввод исходных и вывод результирующих матриц производить с помощью соответствующих подпрограмм пользователя!
 """
 
-def dataInput():
-    numsCount = int(input('Укажи количество чисел... '))
-    nums = tuple(int(input(f'{i + 1} число... ')) for i in range(numsCount))
+def InArr(n: int, m: int) -> list[list[int]]:
+    print('\nСоздание матрицы:')
+    a = [[0] * m for _ in range(n)]
+    for i in range(n):
+        for j in range(m):
+            a[i][j] = int(input(f'a[{i}][{j}] = '))
+    return a
 
-    P = int(input('Укажи левый предел (p)... '))
-    Q = int(input('Укажи правый предел (q)... '))
+def OutArr(a: list[list[int]]) -> None:
+    print('\nМатрица:')
+    for row in a:
+        for i in row:
+            print(i, end = '\t')
+        print()
 
-    return nums, P, Q
+def InLimit(arr: list[int], l: int, p: float, q: float) -> list[int]:
+    indexes = []
+    for i in range(l):
+        if p <= arr[i] <= q:
+            indexes.append(i)
+    return indexes
 
-def dataOutput(lst, p, q):
-    a = []
-    for i in range(len(lst)):
-        if p <= lst[i] <= q:
-            a.append(i)
-    print(a)
+# / / /
 
+n = int(input('Введи кол-во строк в матрице a... '))
+m = int(input('Введи кол-во столбцов в матрице a... '))
 
-dataOutput(*dataInput())
+a = InArr(n, m)
+OutArr(a)
+
+p = int(input('\nВведи левый предел p... '))
+q = int(input('Введи правый предел q... '))
+
+print(f'\nВошедшие в предел [{p}; {q}]:')
+for j in range(m):
+    bar = [0] * n
+    for i in range(n):
+        bar[i] = a[i][j]
+
+    indexes = InLimit(bar, n, p, q)
+
+    for el in indexes:
+        print(f'a[{el}][{j}] = {a[el][j]}')
