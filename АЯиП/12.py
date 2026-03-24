@@ -3,6 +3,24 @@
 - Дан словарь с числовыми значениями. Необходимо найти среднее арифметическое значение всех элементов. Выведите результат на экран
 """
 
-dictionary = {i: i ** 2 for i in range(5)}
+n = int(input('Введи кол-во пар ключ-значение для словаря a... '))
+a = {}
 
-print(sum(dictionary.values()) / len(dictionary))
+print()
+for i in range(n):
+	key = input('Введи ключ для добавления в словарь... ')
+	value = int(input(f'a[\'{key}\'] = '))
+
+	a[key] = value
+
+print('\nСловарь a:')
+for key, value in a.items():
+	print(f'{ key } - { value }')
+
+s = 0
+for key, value in a.items():
+	s = s + value
+
+ma = s / n
+
+print(f'\nСреднее арифметическое значений словаря a = {ma:.1f}')
