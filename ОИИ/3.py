@@ -1,6 +1,8 @@
 from random import sample, randint
 from pandas import ExcelWriter
-from package3 import *
+from package.excel import addChart
+from package.calculating import accessoryDegrees, accessoryFunction, dictionaryOutput, matrixOutput
+from package.logical import NOT, OR, AND, IMPLICATION, IMPLICATION1, IMPLICATION2, IMPLICATION3, IMPLICATION4, IMPLICATION5, IMPLICATION6, XOR
 
 # / / /
 
@@ -22,8 +24,8 @@ powerMatrix, powerFunctions = accessoryFunction(len(objects), [6, 8, 4]) # Мо�
 
 # Автообновление диаграммы
 with ExcelWriter('3 (Степени принадлежности).xlsx', engine = 'xlsxwriter') as file:
-    lastChartLine = addChart(file, objects, durabilityFunctions, 0)
-    addChart(file, objects, powerFunctions, lastChartLine)
+    lastChartLine = addChart(file, objects, durabilityFunctions, 0, 'column')
+    addChart(file, objects, powerFunctions, lastChartLine, 'column')
 
 # / / /
 
@@ -34,7 +36,7 @@ for i in range(len(objects)):
 objectsLogical = {}
 for key, value in objectsFunctions.items():
     A, B = value
-    objectsLogical[key] = NOT(A), NOT(B), AND(A, B), AND(NOT(A), NOT(B)), OR(A, B), OR(NOT(A), NOT(B)), IMPLICATION(A, B), IMPLICATION1(A, B), IMPLICATION2(A, B), IMPLICATION3(A, B), IMPLICATION4(A, B), IMPLICATION5(A, B), IMPLICATION6(A, B), XOR(A, B)
+    objectsLogical[key] = NOT(A), NOT(B), AND(A, B), AND(NOT(A), NOT(B)), OR(A, B), OR(NOT(A), NOT(B)), IMPLICATION(A, B), IMPLICATION1(A, B), IMPLICATION2(A, B), IMPLICATION3(A, B), IMPLICATION4(A, B), IMPLICATION5(A, B), IMPLICATION6(A, B), XOR(A, B), AND(A, NOT(B))
 
 print(f'''- Все возможные свойства (качества, выбранные самостоятельно): { allAtributes }
 - Наиболее существенные свойства (также выбранные самостоятельно): { strictAttributes }
@@ -81,7 +83,8 @@ logicalStatements = [
     'Самый надёжный -> мощный (Гёдель)',
     'Самый надёжный -> мощный (Максиминно)',
     'Самый надёжный -> мощный (Бинарно)',
-    'Самый либо надёжный, либо мощный (строго)'
+    'Самый либо надёжный, либо мощный (строго)',
+    'Самый надёжный, но немощный'
 ]
 
 for i in range(len(logicalStatements)):
