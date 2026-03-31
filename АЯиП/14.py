@@ -1,5 +1,5 @@
 """
-Работа №14 - Вариант 16 - Подпрограммы
+Работа №14 - Вариант 16 - Массивы и подпрограммы
 - Составить подпрограмму определения адресов элементов, значения которых лежат в пределах от p до q, в одномерном массиве. С помощью этой подпрограммы определить и вывести на экран адреса соответствующих элементов в столбцах двухмерной матрицы.
 - Во всех заданиях ввод исходных и вывод результирующих матриц производить с помощью соответствующих подпрограмм пользователя!
 
@@ -26,10 +26,10 @@ def OutArr(a: list[list[int]]) -> None:
             print(i, end = '\t')
         print()
 
-def InLimit(arr: list[int], l: int, p: float, q: float) -> list[int]:
+def InLimit(a: list[int], n: int, p: float, q: float) -> list[int]:
     indexes = []
-    for i in range(l):
-        if p <= arr[i] <= q:
+    for i in range(n):
+        if p <= a[i] <= q:
             indexes.append(i)
     return indexes
 
@@ -46,9 +46,9 @@ q = int(input('Введи правый предел q... '))
 
 print(f'\nВошедшие в предел [{p}; {q}]:')
 for j in range(m):
-    bar = [0] * n
+    bar = []
     for i in range(n):
-        bar[i] = a[i][j]
+        bar.append(a[i][j])
 
     indexes = InLimit(bar, n, p, q)
 
