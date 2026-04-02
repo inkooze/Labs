@@ -6,18 +6,10 @@ from package.graphics import triangleFunction, trapezoidFunction, gaussFunction
 # сигма на лекции была 400, можно брать 10-500
 
 clusters = [], [], []
-for x in range(100, 300 + 1, 10):
-    a, b, c = 180, 240, 300
-    if a <= x <= c:
-        clusters[0].append((x, round(triangleFunction(a, b, c, x), 2)))
-
-    a, b, c, d = 160, 180, 200, 270
-    if a <= x <= d:
-        clusters[1].append((x, round(trapezoidFunction(a, b, c, d, x), 2)))
-
-    a, b, c = 100, 200, 130
-    if a <= x <= b:
-        clusters[2].append((x, gaussFunction(130, 40, x)))
+for x in range(100, 300 + 1):
+    clusters[0].append((x, round(triangleFunction(180, 240, 300, x), 2)))
+    clusters[1].append((x, round(trapezoidFunction(160, 180, 200, 270, x), 2)))
+    clusters[2].append((x, gaussFunction(130, 15, x)))
 
 # Автообновление диаграммы
 with ExcelWriter('4 (Функции принадлежностей, прямые графики).xlsx', engine = 'xlsxwriter') as file:
