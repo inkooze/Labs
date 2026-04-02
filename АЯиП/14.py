@@ -26,7 +26,7 @@ def OutArr(a: list[list[int]]) -> None:
             print(i, end = '\t')
         print()
 
-def InLimit(a: list[int], n: int, p: float, q: float) -> list[int]:
+def InLimit(a: list[int], n: int, p: int, q: int) -> list[int]:
     indexes = []
     for i in range(n):
         if p <= a[i] <= q:
